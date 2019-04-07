@@ -19,7 +19,6 @@
 		6A9A403F2259B84B0014110F /* CarDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A403D2259B84B0014110F /* CarDetailsViewController.xib */; };
 		6A9A40412259BB280014110F /* CarDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9A40402259BB280014110F /* CarDetailsViewModel.swift */; };
 		6A9F96FA2258C40E007AFEA0 /* CarDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9F96F92258C40E007AFEA0 /* CarDetails.swift */; };
-		6AEC8F8B225963E000F2005C /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AEC8F8A225963E000F2005C /* Secrets.plist */; };
 		6AEC8F8D22596E2500F2005C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F8C22596E2500F2005C /* AppCoordinator.swift */; };
 		6AEC8F902259705500F2005C /* CarListingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F8F2259705500F2005C /* CarListingTableViewController.swift */; };
 		6AEC8F9622597B2500F2005C /* CarListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEC8F9422597B2500F2005C /* CarListingTableViewCell.swift */; };
@@ -42,7 +41,6 @@
 		6A9A403D2259B84B0014110F /* CarDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarDetailsViewController.xib; sourceTree = "<group>"; };
 		6A9A40402259BB280014110F /* CarDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsViewModel.swift; sourceTree = "<group>"; };
 		6A9F96F92258C40E007AFEA0 /* CarDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetails.swift; sourceTree = "<group>"; };
-		6AEC8F8A225963E000F2005C /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		6AEC8F8C22596E2500F2005C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		6AEC8F8F2259705500F2005C /* CarListingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListingTableViewController.swift; sourceTree = "<group>"; };
 		6AEC8F9422597B2500F2005C /* CarListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListingTableViewCell.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 				6A3326C42258A457001F1A38 /* Assets.xcassets */,
 				6A3326C62258A457001F1A38 /* LaunchScreen.storyboard */,
 				6A3326C92258A457001F1A38 /* Info.plist */,
-				6AEC8F8A225963E000F2005C /* Secrets.plist */,
 			);
 			path = carsales;
 			sourceTree = "<group>";
@@ -193,7 +190,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AEC8F8B225963E000F2005C /* Secrets.plist in Resources */,
 				6A3326C82258A457001F1A38 /* LaunchScreen.storyboard in Resources */,
 				6A9A403F2259B84B0014110F /* CarDetailsViewController.xib in Resources */,
 				6AEC8F9722597B2500F2005C /* CarListingTableViewCell.xib in Resources */,
