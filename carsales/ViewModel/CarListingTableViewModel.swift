@@ -52,15 +52,13 @@ class CarListingTableViewModel {
             case .success(let listing):
                 this.listing = listing
                 completion()
-            case .failure: break // TODO: - Error handling
+            case .failure(let error): print(error)
             }
         }
     }
     
     func retrieveImage(for indexPath: IndexPath, completion: @escaping (UIImage?) -> Void) {
         guard indexPath.row < listing.count else { return }
-        service.retrieveImage(url: listing[indexPath.row].mainPhoto) { image in
-            completion(image)
-        }
+        service.retrieveImage(url: listing[indexPath.row].mainPhoto, completion: completion)
     }
 }

@@ -27,7 +27,6 @@ class CarListingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "CarListingTableViewController"
         setupTableView()
         viewModel.retrieveListing { [weak self] in
             DispatchQueue.main.async {

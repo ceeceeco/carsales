@@ -32,7 +32,10 @@ class RetailCarsalesService: CarsalesService {
     }
 
     func retrieveListing(completion: @escaping (RetrieveListingResult) -> Void) {
-        guard let parameters = parameters else { return }
+        guard let parameters = parameters else {
+            completion(.failure(CarsalesServiceError.missingCredentials));
+            return
+        }
         let requestString = Url.base + Url.retrieveList + parameters
         submitRequest(requestString) { result in
             switch result {
@@ -50,7 +53,10 @@ class RetailCarsalesService: CarsalesService {
     }
     
     func retrieveCarDetails(detailsUrl: String, completion: @escaping RetrieveCarDetailsCallback) {
-        guard let parameters = parameters else { return }
+        guard let parameters = parameters else {
+            completion(.failure(CarsalesServiceError.missingCredentials));
+            return
+        }
         let requestString = Url.base + detailsUrl + parameters
         submitRequest(requestString) { result in
             switch result {

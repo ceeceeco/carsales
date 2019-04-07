@@ -12,4 +12,5 @@ enum CarsalesServiceError: Error {
     case networkError(Error)
     case dataNotFound
     case jsonParsingError(Error)
+    case missingCredentials
 }
