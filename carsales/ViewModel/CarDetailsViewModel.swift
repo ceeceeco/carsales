@@ -21,6 +21,10 @@ class CarDetailsViewModel {
         self.detailsUrl = detailsUrl
     }
     
+    var numberOfImages: Int {
+        return details?.overview.photoUrlList.count ?? 0
+    }
+    
     var locationText: String? {
         return details?.overview.location
     }
@@ -47,8 +51,8 @@ class CarDetailsViewModel {
         }
     }
     
-    func retrieveImage(completion: @escaping (UIImage?) -> Void) {
-        guard let imageUrl = details?.overview.photoUrlList.first else { return }
+    func retrieveImage(index: Int, completion: @escaping (UIImage?) -> Void) {
+        guard let imageUrl = details?.overview.photoUrlList[index] else { return }
         service.retrieveImage(url: imageUrl, completion: completion)
     }
 }

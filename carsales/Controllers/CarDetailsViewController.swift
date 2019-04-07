@@ -8,9 +8,10 @@
 
 import UIKit
 
-class CarDetailsViewController: UIViewController {
-    
-    @IBOutlet private var previewImageView: UIImageView!
+class CarDetailsViewController: UIViewController, UIScrollViewDelegate {
+
+    @IBOutlet private var mainImageView: UIImageView!
+    @IBOutlet private var photosStackView: UIStackView!
     @IBOutlet private var locationLabel: UILabel!
     @IBOutlet private var priceLabel: UILabel!
     @IBOutlet private var saleStatusLabel: UILabel!
@@ -45,15 +46,39 @@ class CarDetailsViewController: UIViewController {
             self.priceLabel.text = self.viewModel.priceText
             self.saleStatusLabel.text = self.viewModel.saleStatusText
             self.commentsLabel.text = self.viewModel.commentsText
-            self.setImage()
+            
+            self.setupPhotosStackView()
         }
     }
     
-    private func setImage() {
-        viewModel.retrieveImage { [weak self] image in
+    private func setupPhotosStackView() {
+        for _ in 1..<self.viewModel.numberOfImages {
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            self.photosStackView.addArrangedSubview(imageView)
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalTo: self.mainImageView.heightAnchor),
+                imageView.widthAnchor.constraint(equalTo: self.mainImageView.widthAnchor)])
+            self.updateImage(index: 0)
+        }
+    }
+    
+    private func updateImage(index: Int) {
+        viewModel.retrieveImage(index: index) { [weak self] image in
             DispatchQueue.main.async {
-                self?.previewImageView.image = image
+                guard let imageView = self?.photosStackView?.arrangedSubviews[index] as? UIImageView else { return }
+                imageView.image = image
             }
+        }
+    }
+    
+    // MARK: - UIScrollViewDelegate
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        guard let imageView = photosStackView.arrangedSubviews[pageIndex] as? UIImageView else { return }
+        if imageView.image == nil {
+            updateImage(index: pageIndex)
         }
     }
 }

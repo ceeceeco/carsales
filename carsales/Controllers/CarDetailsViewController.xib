@@ -14,7 +14,8 @@
             <connections>
                 <outlet property="commentsLabel" destination="sxz-fT-SPy" id="UJ1-B5-hmw"/>
                 <outlet property="locationLabel" destination="5lI-yd-h4z" id="DdH-k2-vpD"/>
-                <outlet property="previewImageView" destination="ch2-BS-g2u" id="0Wl-DE-Qbl"/>
+                <outlet property="mainImageView" destination="IEH-VJ-y4f" id="FyE-pu-B0F"/>
+                <outlet property="photosStackView" destination="idy-Ep-pWK" id="4nK-JV-AsX"/>
                 <outlet property="priceLabel" destination="QcX-Zb-qfH" id="E6u-7z-ezX"/>
                 <outlet property="saleStatusLabel" destination="DEg-Mb-wID" id="kfX-Id-th5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,12 +32,32 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rjN-1V-jyp">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="308"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ch2-BS-g2u">
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z3B-XT-pFf">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idy-Ep-pWK">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IEH-VJ-y4f">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="IEH-VJ-y4f" secondAttribute="height" multiplier="3:2" id="7yV-yA-PPF"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="ch2-BS-g2u" secondAttribute="height" multiplier="3:2" id="Erd-14-jIc"/>
+                                        <constraint firstItem="idy-Ep-pWK" firstAttribute="leading" secondItem="Z3B-XT-pFf" secondAttribute="leading" id="3ef-2e-lNr"/>
+                                        <constraint firstItem="idy-Ep-pWK" firstAttribute="top" secondItem="Z3B-XT-pFf" secondAttribute="top" id="DwH-Zl-ydh"/>
+                                        <constraint firstAttribute="trailing" secondItem="idy-Ep-pWK" secondAttribute="trailing" id="Tbq-8y-tqh"/>
+                                        <constraint firstAttribute="bottom" secondItem="idy-Ep-pWK" secondAttribute="bottom" id="UBu-R9-LB6"/>
+                                        <constraint firstAttribute="width" secondItem="Z3B-XT-pFf" secondAttribute="height" multiplier="3:2" id="Zr1-KA-U6r"/>
                                     </constraints>
-                                </imageView>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="Sh7-2D-ePb"/>
+                                    </connections>
+                                </scrollView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zob-4n-wXB">
                                     <rect key="frame" x="24" y="284" width="366" height="24"/>
                                     <subviews>
@@ -68,8 +89,9 @@
                                 </stackView>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="IEH-VJ-y4f" firstAttribute="width" secondItem="rjN-1V-jyp" secondAttribute="width" id="E7V-Ac-exg"/>
                                 <constraint firstItem="Zob-4n-wXB" firstAttribute="width" secondItem="rjN-1V-jyp" secondAttribute="width" constant="-48" id="NIF-Ha-sF6"/>
-                                <constraint firstItem="ch2-BS-g2u" firstAttribute="width" secondItem="rjN-1V-jyp" secondAttribute="width" id="tz4-k8-7Q4"/>
+                                <constraint firstItem="Z3B-XT-pFf" firstAttribute="width" secondItem="rjN-1V-jyp" secondAttribute="width" id="VFK-bN-HoN"/>
                             </constraints>
                         </stackView>
                     </subviews>
