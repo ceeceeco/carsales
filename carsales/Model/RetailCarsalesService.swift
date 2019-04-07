@@ -6,7 +6,7 @@
 //  Copyright © 2019 Charisse Co. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class RetailCarsalesService: CarsalesService {
     
@@ -14,7 +14,7 @@ class RetailCarsalesService: CarsalesService {
         static let base = "http://retailapi-v2.dev.carsales.com.au"
         static let retrieveList = "/stock/car/test/v1/listing"
     }
-
+    
     private var parameters: String? {
         guard
             let plistPath = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
@@ -32,7 +32,8 @@ class RetailCarsalesService: CarsalesService {
     }
 
     func retrieveListing(completion: @escaping (RetrieveListingResult) -> Void) {
-        let requestString = Url.base + Url.retrieveList
+        guard let parameters = parameters else { return }
+        let requestString = Url.base + Url.retrieveList + parameters
         submitRequest(requestString) { result in
             switch result {
             case .success(let data):
@@ -49,7 +50,8 @@ class RetailCarsalesService: CarsalesService {
     }
     
     func retrieveCarDetails(detailsUrl: String, completion: @escaping RetrieveCarDetailsCallback) {
-        let requestString = Url.base + detailsUrl
+        guard let parameters = parameters else { return }
+        let requestString = Url.base + detailsUrl + parameters
         submitRequest(requestString) { result in
             switch result {
             case .success(let data):
@@ -65,10 +67,17 @@ class RetailCarsalesService: CarsalesService {
         }
     }
     
+    func retrieveImage(url: String, completion: @escaping (UIImage?) -> Void) {
+        submitRequest(url) { result in
+            switch result {
+            case .success(let data): completion(UIImage(data: data))
+            case .failure: completion(nil)
+            }
+        }
+    }
+    
     private func submitRequest(_ requestString: String, completion: @escaping (Result<Data, CarsalesServiceError>) -> Void) {
-        guard
-            let parameters = parameters,
-            let dataURL = URL(string: requestString + parameters) else { return } // TODO: Error handling
+        guard let dataURL = URL(string: requestString) else { return } // TODO: Error handling
         let request = URLRequest(url: dataURL)
         let task = session.dataTask(with: request) { data, _, error in
             if let error = error {

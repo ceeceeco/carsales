@@ -6,7 +6,7 @@
 //  Copyright © 2019 Charisse Co. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias RetrieveListingResult = Result<[CarOverview], Error>
 typealias RetrieveListingCallback = (RetrieveListingResult) -> Void
@@ -19,4 +19,6 @@ protocol CarsalesService {
     func retrieveListing(completion: @escaping RetrieveListingCallback)
     
     func retrieveCarDetails(detailsUrl: String, completion: @escaping RetrieveCarDetailsCallback)
+    
+    func retrieveImage(url: String, completion: @escaping (UIImage?) -> Void)
 }
